@@ -1,11 +1,13 @@
 using Core.Entities;
 using Core.Interfaces;
 using Infrastructure.Repositorios;
+using AutoMapper;
 namespace Infrastructure.UnityOfWork
 {
     public class UnityOfWork : IUnityOfWork, IDisposable
     {
         private readonly AplicationDbContext _context;
+        private readonly IMapper _mapper;
         private TrainerRepositorio _trainers;
         private IncidenciaRepositorio _incidencias;
         public UnityOfWork(AplicationDbContext context)
@@ -15,7 +17,7 @@ namespace Infrastructure.UnityOfWork
         public ITrainerInterface Trainers
         {
             get{
-                _trainers ??= new TrainerRepositorio(_context);
+                _trainers ??= new TrainerRepositorio(_context, _mapper);
                 return _trainers;
             }
         }
@@ -31,9 +33,9 @@ namespace Infrastructure.UnityOfWork
             _context.Dispose();
         }
 
-        public int Save()
+        public Task<int> SaveAsync()
         {
-            throw new NotImplementedException();
+            return _context.SaveChangesAsync();
         }
     }
 }

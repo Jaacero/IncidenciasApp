@@ -22,9 +22,22 @@ namespace Infrastructure.Repositorios
            return ;
         }
 
-        public void AddRange(IEnumerable<Trainer> trainers)
+        public async void AddRangeEmail(IEnumerable<EmailsTrainers> emails)
         {
-            throw new NotImplementedException();
+           context.AddRange(emails);
+           await context.SaveChangesAsync();
+        }
+
+        public async void AddRangeT(IEnumerable<Trainer> trainers)
+        {
+            context.AddRange(trainers);
+           await context.SaveChangesAsync();
+        }
+
+        public async void AddRangeTelefono(IEnumerable<TelefonosTrainers> telefonos)
+        {
+           context.AddRange(telefonos);
+           await context.SaveChangesAsync();
         }
 
         public IEnumerable<Trainer> Find(Expression<Func<Trainer, bool>> expression)
@@ -42,28 +55,29 @@ namespace Infrastructure.Repositorios
 
         public async  Task<Trainer> GetTrainerByIdAsync(int id)
         {
-            var actor = await context.Trainers.FirstOrDefaultAsync(x =>x.Id == id);
+            var actor = await context.Trainers
+            .Include(x => x.EmailsTrainer)
+            .Include(x => x.TelefonosTrainer)
+            .FirstOrDefaultAsync(x =>x.Id == id);
+           
            return actor;
         }
 
-        public Task<Trainer> GetTrainerByIdAsync()
-        {
-            throw new NotImplementedException();
-        }
 
         public void Remove(Trainer trainer)
         {
-            throw new NotImplementedException();
+            context.Set<Trainer>().Remove(trainer);
+            
         }
 
         public void RemoveRange(IEnumerable<Trainer> trainers)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Update(Trainer trainer)
         {
-            throw new NotImplementedException();
+            context.Set<Trainer>().Update(trainer);
         }
     }
 }

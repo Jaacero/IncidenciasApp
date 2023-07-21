@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using Core.Entities;
+
 namespace Core.Interfaces
 {
     public interface ITrainerInterface
@@ -8,7 +9,9 @@ namespace Core.Interfaces
         Task<IEnumerable<Trainer>> GetAllTrainersAsync();
         IEnumerable<Trainer> Find(Expression<Func<Trainer,bool>> expression);
         void Add(Trainer trainer);
-        void AddRange(IEnumerable<Trainer> trainers);
+        void AddRangeT(IEnumerable<Trainer> trainers);
+        void AddRangeEmail(IEnumerable<EmailsTrainers> emails);
+        void AddRangeTelefono(IEnumerable<TelefonosTrainers> telefonos);
         void Remove(Trainer trainer);
         void RemoveRange (IEnumerable<Trainer> trainers);
         void Update(Trainer trainer);

@@ -5,6 +5,6 @@ namespace Core.Interfaces
     {
          ITrainerInterface Trainers {get;}
          IIncidenciaInterface Incidencias {get;}
-         int Save();  
+         Task<int> SaveAsync();  
     }
 }

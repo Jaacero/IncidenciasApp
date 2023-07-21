@@ -8,9 +8,13 @@ namespace API.Utilidades
     {
         public AutoMapperProfile()
         {
-            CreateMap<TrainerDTO,Trainer>();
+           /* CreateMap<TrainerDTO,Trainer>();
             CreateMap<EmailTrainerCreationDTO,EmailsTrainers>();
-            CreateMap<TelefonoTrainerCreationDTO,TelefonosTrainers>();
+            CreateMap<TelefonoTrainerCreationDTO,TelefonosTrainers>();*/
+            CreateMap<Trainer,TrainerDTO>().ReverseMap();
+            CreateMap<EmailsTrainers,EmailTrainerCreationDTO>().ReverseMap();
+            CreateMap<TelefonosTrainers,TelefonoTrainerCreationDTO>().ReverseMap();
+
         }
     }
 }
