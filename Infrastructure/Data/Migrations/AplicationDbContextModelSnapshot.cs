@@ -70,6 +70,44 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex("IdTrainer");
 
                     b.ToTable("EmailsTrainer");
+
+                    b.HasData(
+                        new
+                        {
+                            IdTipoEmail = 1,
+                            IdTrainer = 3,
+                            Email = "Aicia@gmail.com"
+                        },
+                        new
+                        {
+                            IdTipoEmail = 1,
+                            IdTrainer = 2,
+                            Email = "pedro@gmail.com"
+                        },
+                        new
+                        {
+                            IdTipoEmail = 1,
+                            IdTrainer = 1,
+                            Email = "pedro123@gmail.com"
+                        },
+                        new
+                        {
+                            IdTipoEmail = 2,
+                            IdTrainer = 3,
+                            Email = "Aicia_work@gmail.com"
+                        },
+                        new
+                        {
+                            IdTipoEmail = 2,
+                            IdTrainer = 2,
+                            Email = "marcelo_work@gmail.com"
+                        },
+                        new
+                        {
+                            IdTipoEmail = 2,
+                            IdTrainer = 1,
+                            Email = "pedro_work@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Core.Entities.Hardware", b =>
@@ -237,6 +275,26 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex("IdTrainer");
 
                     b.ToTable("TelefonosTrainer");
+
+                    b.HasData(
+                        new
+                        {
+                            IdTipoTelefono = 2,
+                            IdTrainer = 3,
+                            NumeroTelefono = "3213383473"
+                        },
+                        new
+                        {
+                            IdTipoTelefono = 2,
+                            IdTrainer = 2,
+                            NumeroTelefono = "315246325"
+                        },
+                        new
+                        {
+                            IdTipoTelefono = 2,
+                            IdTrainer = 1,
+                            NumeroTelefono = "300254214"
+                        });
                 });
 
             modelBuilder.Entity("Core.Entities.TipoHardware", b =>
@@ -297,6 +355,18 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TiposEmail");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Tipo = "Email Laboral"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            Tipo = "Email Personal"
+                        });
                 });
 
             modelBuilder.Entity("Core.Entities.TiposTelefono", b =>
@@ -312,6 +382,23 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TiposTelefono");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            Tipo = "Telefono Fijo"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Tipo = "Telefono Empresarial"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            Tipo = "Telefono Personal"
+                        });
                 });
 
             modelBuilder.Entity("Core.Entities.Trainer", b =>
@@ -327,6 +414,23 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Trainers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nombre = "Pedro Carvajal"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nombre = "Marcelo Benedetti"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nombre = "Alicia Romero"
+                        });
                 });
 
             modelBuilder.Entity("Core.Entities.EmailsTrainers", b =>

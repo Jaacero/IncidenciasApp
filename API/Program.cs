@@ -1,21 +1,24 @@
+using System.Text.Json.Serialization;
+using API.Extensions;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddDbContext<AplicationDbContext>(
-    options =>{
+builder.Services.ConfigCores();
+builder.Services.AddControllers()
+    .AddJsonOptions( options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddAplicationServices();
+builder.Services.AddDbContext<AplicationDbContext>(options =>{
         string ? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
         options.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString));
     }
 );
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

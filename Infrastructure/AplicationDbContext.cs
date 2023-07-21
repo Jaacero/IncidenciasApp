@@ -1,8 +1,9 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Core.Entities;
-namespace Infrastructure;
+using Core.Entities.Seeding;
 
+namespace Infrastructure;
 public class AplicationDbContext : DbContext
 {
     public AplicationDbContext(DbContextOptions options) : base(options)
@@ -28,5 +29,8 @@ public class AplicationDbContext : DbContext
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            //SeedingInicial.Seed(modelBuilder);
+
         }
 }
