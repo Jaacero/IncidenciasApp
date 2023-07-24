@@ -6,7 +6,9 @@ namespace Core.Interfaces
     {
         Task<Incidencia> GetIncidenciaByIdAsync();
         Task<IEnumerable<Incidencia>> GetAllIncidenciasAsync();
-        IEnumerable<Incidencia> Find(Expression<Func<Incidencia,bool>> expression);
+        Task<IEnumerable<Incidencia>> Find(Expression<Func<Incidencia,bool>> expression); 
+        Task<IEnumerable<Incidencia>>GetIncidinciaByCategoria(int idcategoria);
+        Task<IEnumerable<Incidencia>> GetInidenciasByTrainer(int idTrainer);
         void Add(Incidencia incidencia);
         void AddRange(IEnumerable<Incidencia> incidencias);
         void Remove(Incidencia incidencia);

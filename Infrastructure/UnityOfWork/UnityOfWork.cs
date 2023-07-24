@@ -20,12 +20,22 @@ namespace Infrastructure.UnityOfWork
                 _trainers ??= new TrainerRepositorio(_context, _mapper);
                 return _trainers;
             }
+            set{
+                if(_trainers == null){
+                    _trainers = new TrainerRepositorio(_context,_mapper);
+                }
+            }
         }
         public IIncidenciaInterface Incidencias
         {
             get{
                 _incidencias ??= new IncidenciaRepositorio(_context);
                  return _incidencias;
+            }
+            set{
+                if(_incidencias == null){
+                    _incidencias = new IncidenciaRepositorio(_context);
+                }
             }
         }
         public void Dispose()
@@ -36,6 +46,10 @@ namespace Infrastructure.UnityOfWork
         public Task<int> SaveAsync()
         {
             return _context.SaveChangesAsync();
+        }
+        public Task NotFound()
+        {
+            return NotFound();
         }
     }
 }

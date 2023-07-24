@@ -3,8 +3,8 @@ namespace API.DTOs
 {
     public class EmailTrainerCreationDTO
     {
-        public int IdTrainer;
-        public int IdTipoEmail;
-        public string Email = null!;
+        public int IdTrainer  { get; set;}
+        public int IdTipoEmail  { get; set;}
+        public string Email  { get; set;}= null!;
     }
 }

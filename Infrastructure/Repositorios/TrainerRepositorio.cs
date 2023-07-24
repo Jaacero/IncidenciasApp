@@ -22,22 +22,21 @@ namespace Infrastructure.Repositorios
            return ;
         }
 
-        public async void AddRangeEmail(IEnumerable<EmailsTrainers> emails)
+        public void AddRangeEmail(IEnumerable<EmailsTrainers> emails)
         {
            context.AddRange(emails);
-           await context.SaveChangesAsync();
+          
         }
 
-        public async void AddRangeT(IEnumerable<Trainer> trainers)
+        public void AddRangeT(IEnumerable<Trainer> trainers)
         {
             context.AddRange(trainers);
-           await context.SaveChangesAsync();
+           
         }
 
-        public async void AddRangeTelefono(IEnumerable<TelefonosTrainers> telefonos)
+        public  void AddRangeTelefono(IEnumerable<TelefonosTrainers> telefonos)
         {
-           context.AddRange(telefonos);
-           await context.SaveChangesAsync();
+           context.AddRange(telefonos);   
         }
 
         public IEnumerable<Trainer> Find(Expression<Func<Trainer, bool>> expression)

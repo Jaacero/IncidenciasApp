@@ -30,7 +30,7 @@ public class AplicationDbContext : DbContext
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            //SeedingInicial.Seed(modelBuilder);
+            SeedingInicail.Seed(modelBuilder);
 
         }
 }

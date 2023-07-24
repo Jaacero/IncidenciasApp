@@ -2,6 +2,8 @@ using API.DTOs;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Core.Entities;
+using Core.DTOS;
+
 namespace API.Utilidades
 {
     public class AutoMapperProfile : Profile
@@ -14,6 +16,7 @@ namespace API.Utilidades
             CreateMap<Trainer,TrainerDTO>().ReverseMap();
             CreateMap<EmailsTrainers,EmailTrainerCreationDTO>().ReverseMap();
             CreateMap<TelefonosTrainers,TelefonoTrainerCreationDTO>().ReverseMap();
+            CreateMap<Incidencia,IncidenciaDTO>().ReverseMap();
 
         }
     }

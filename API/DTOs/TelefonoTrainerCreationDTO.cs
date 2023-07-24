@@ -7,9 +7,9 @@ namespace API.DTOs
 {
     public class TelefonoTrainerCreationDTO
     {
-        public int IdTrainer;
-        public int IdTipoTelefono;
-        public string NumeroTelefono = null!;
+        public int IdTrainer  { get; set;}
+        public int IdTipoTelefono  { get; set;}
+        public string NumeroTelefono  { get; set;} = null!;
         
     }
 }

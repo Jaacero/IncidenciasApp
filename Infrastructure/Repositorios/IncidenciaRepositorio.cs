@@ -1,6 +1,8 @@
 using System.Linq.Expressions;
 using Core.Entities;
 using Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 namespace Infrastructure.Repositorios
 {
     public class IncidenciaRepositorio : IIncidenciaInterface
@@ -19,17 +21,26 @@ namespace Infrastructure.Repositorios
 
         public void AddRange(IEnumerable<Incidencia> incidencias)
         {
-            throw new NotImplementedException();
+            context.AddRange(incidencias);
         }
 
-        public IEnumerable<Incidencia> Find(Expression<Func<Incidencia, bool>> expression)
+        public async Task<IEnumerable<Incidencia>> Find(Expression<Func<Incidencia, bool>> expression)
         {
-            throw new NotImplementedException();
+           var incidencias = await context.Incidencias.Where(expression).ToListAsync();
+            return incidencias;
+        }
+        public async Task<IEnumerable<Incidencia>>GetIncidinciaByCategoria(int idcategoria)
+        {
+            return await context.Incidencias.Where(x =>x.IdCategoria == idcategoria).ToListAsync();
+        }
+        public async Task<IEnumerable<Incidencia>> GetInidenciasByTrainer(int idTrainer)
+        {
+            return await context.Incidencias.Where(x => x.IdTrainer == idTrainer).ToListAsync();
         }
 
-        public Task<IEnumerable<Incidencia>> GetAllIncidenciasAsync()
+        public async Task<IEnumerable<Incidencia>> GetAllIncidenciasAsync()
         {
-            throw new NotImplementedException();
+            return await context.Incidencias.ToListAsync();
         }
 
         public Task<Incidencia> GetIncidenciaByIdAsync()
@@ -51,5 +62,7 @@ namespace Infrastructure.Repositorios
         {
             throw new NotImplementedException();
         }
+        
+     
     }
 }

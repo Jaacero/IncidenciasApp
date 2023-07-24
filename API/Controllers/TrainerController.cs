@@ -3,6 +3,7 @@ using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using API.DTOs;
 using AutoMapper;
+using Infrastructure.UnityOfWork;
 
 namespace API.Controllers
 {

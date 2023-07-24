@@ -518,19 +518,19 @@
     ]
   },
   "packageFolders": {
-    "/home/apolm01-034/.nuget/packages/": {}
+    "C:\\Users\\atena\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/apolm01-034/Desktop/IncidenciasApp/Core/Core.csproj",
+      "projectUniqueName": "c:\\Users\\atena\\Desktop\\IncidenciasApp\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "/home/apolm01-034/Desktop/IncidenciasApp/Core/Core.csproj",
-      "packagesPath": "/home/apolm01-034/.nuget/packages/",
-      "outputPath": "/home/apolm01-034/Desktop/IncidenciasApp/Core/obj/",
+      "projectPath": "c:\\Users\\atena\\Desktop\\IncidenciasApp\\Core\\Core.csproj",
+      "packagesPath": "C:\\Users\\atena\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\atena\\Desktop\\IncidenciasApp\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/apolm01-034/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\atena\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -575,7 +575,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.109/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitailCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -357,6 +359,58 @@ namespace Infrastructure.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "TiposEmail",
+                columns: new[] { "Id", "Tipo" },
+                values: new object[,]
+                {
+                    { 1, "Email Personal" },
+                    { 2, "Email Laboral" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TiposTelefono",
+                columns: new[] { "Id", "Tipo" },
+                values: new object[,]
+                {
+                    { 1, "Telefono Personal" },
+                    { 2, "Telefono Empresarial" },
+                    { 3, "Telefono Fijo" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Trainers",
+                columns: new[] { "Id", "Nombre" },
+                values: new object[,]
+                {
+                    { 1, "Pedro Carvajal" },
+                    { 2, "Marcelo Benedetti" },
+                    { 3, "Alicia Romero" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "EmailsTrainer",
+                columns: new[] { "IdTipoEmail", "IdTrainer", "Email" },
+                values: new object[,]
+                {
+                    { 1, 1, "pedro123@gmail.com" },
+                    { 1, 2, "pedro@gmail.com" },
+                    { 1, 3, "Aicia@gmail.com" },
+                    { 2, 1, "pedro_work@gmail.com" },
+                    { 2, 2, "marcelo_work@gmail.com" },
+                    { 2, 3, "Aicia_work@gmail.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TelefonosTrainer",
+                columns: new[] { "IdTipoTelefono", "IdTrainer", "NumeroTelefono" },
+                values: new object[,]
+                {
+                    { 2, 1, "300254214" },
+                    { 2, 2, "315246325" },
+                    { 2, 3, "3213383473" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmailsTrainer_IdTrainer",

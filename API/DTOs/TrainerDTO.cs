@@ -5,9 +5,9 @@ namespace API.DTOs
     {
         public int Id { get; set;}
         public string Nombre { get; set;} = null!;
-        public List<EmailsTrainers> EmailsTrainers 
-        = new List<EmailsTrainers>();
-         public List<TelefonosTrainers> TelefonosTrainer 
-         = new List<TelefonosTrainers>();
+        public List<EmailTrainerCreationDTO> EmailsTrainers  { get; set;}
+        = new List<EmailTrainerCreationDTO>();
+         public List<TelefonoTrainerCreationDTO> TelefonosTrainer  { get; set;}
+         = new List<TelefonoTrainerCreationDTO>();
     }
 }

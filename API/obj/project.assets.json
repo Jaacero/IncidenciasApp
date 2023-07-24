@@ -1621,32 +1621,33 @@
     ]
   },
   "packageFolders": {
-    "/home/apolm01-034/.nuget/packages/": {}
+    "C:\\Users\\atena\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/apolm01-034/Desktop/IncidenciasApp/API/API.csproj",
+      "projectUniqueName": "C:\\Users\\atena\\Desktop\\IncidenciasApp\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "/home/apolm01-034/Desktop/IncidenciasApp/API/API.csproj",
-      "packagesPath": "/home/apolm01-034/.nuget/packages/",
-      "outputPath": "/home/apolm01-034/Desktop/IncidenciasApp/API/obj/",
+      "projectPath": "C:\\Users\\atena\\Desktop\\IncidenciasApp\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\atena\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\atena\\Desktop\\IncidenciasApp\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/apolm01-034/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\atena\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/home/apolm01-034/Desktop/IncidenciasApp/Infrastructure/Infrastructure.csproj": {
-              "projectPath": "/home/apolm01-034/Desktop/IncidenciasApp/Infrastructure/Infrastructure.csproj"
+            "C:\\Users\\atena\\Desktop\\IncidenciasApp\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\atena\\Desktop\\IncidenciasApp\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -1703,7 +1704,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.109/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
