@@ -20,6 +20,7 @@ namespace API.Controllers
             this.mapper = mapper;
         }
         [HttpGet]
+        [ApiVersion("1.0")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -29,7 +30,8 @@ namespace API.Controllers
             GetAllTrainersAsync();
             return Ok(actores);
         }
-        [HttpGet("{id:int}")]
+        [HttpGet("ById/{id}")]
+        [ApiVersion("1.0")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -42,7 +44,16 @@ namespace API.Controllers
             }
             return Ok(actor);
         }
+
+        [HttpGet("getByName/{name}")]
+        [ApiVersion("1.0")]
+        public async Task<IEnumerable<Trainer>> GetTrainerByName(string name)
+        {
+            return await unityOfWork.Trainers.GetTrainersByName(name);
+        }
+
         [HttpPost]
+        [ApiVersion("1.0")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -54,6 +65,7 @@ namespace API.Controllers
             return Ok();
         }
         [HttpPost("emails")]
+        [ApiVersion("1.0")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -65,6 +77,7 @@ namespace API.Controllers
             return Ok();
         }
         [HttpPost("telefonos")]
+        [ApiVersion("1.0")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -76,6 +89,7 @@ namespace API.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
+        [ApiVersion("1.0")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

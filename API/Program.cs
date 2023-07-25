@@ -3,11 +3,14 @@ using System.Text.Json.Serialization;
 using API.Extensions;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using AspNetCoreRateLimit;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.ConfigCores();
+builder.Services.ConfigureRateLimiting();
+builder.Services.ConfigureApiVersioning();
 builder.Services.AddControllers()
     .AddJsonOptions( options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddAplicationServices();
@@ -31,6 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors("CorsPolicy");
+app.UseIpRateLimiting();
+app.UseApiVersioning();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

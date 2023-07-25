@@ -47,19 +47,29 @@ namespace Infrastructure.Repositorios
         public async Task<IEnumerable<Trainer>> GetAllTrainersAsync()
         {
             return await context.Trainers
-            .Include(x =>x.EmailsTrainer)
-            .Include(x =>x.TelefonosTrainer)
+            .Include(x =>x.EmailsTrainer)   
+            .Include(x =>x.TelefonosTrainer)    
             .ToListAsync();
         }
 
-        public async  Task<Trainer> GetTrainerByIdAsync(int id)
+        public async Task<Trainer> GetTrainerByIdAsync(int id)
         {
             var actor = await context.Trainers
             .Include(x => x.EmailsTrainer)
             .Include(x => x.TelefonosTrainer)
             .FirstOrDefaultAsync(x =>x.Id == id);
-           
+
            return actor;
+        }
+
+        public async Task<IEnumerable<Trainer>> GetTrainersByName(string name)
+        {
+            return await context.Trainers
+            .Where(x => x.Nombre.Contains(name))
+            .Include(x => x.EmailsTrainer)
+            .Include(x => x.TelefonosTrainer)
+            .ToListAsync();
+           
         }
 
 

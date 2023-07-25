@@ -21,6 +21,7 @@ namespace API.Controllers
             _unitofwork = unitofwork;
             _mapper = mapper;
         }
+
         [HttpPost]
         public async Task Postincidencias(IncidenciaDTO[] incidenciasDTOs)
         {
@@ -28,17 +29,20 @@ namespace API.Controllers
              _unitofwork.Incidencias.AddRange(incidencias);
              await _unitofwork.SaveAsync();          
         }
+
         [HttpGet]
         public async Task<IEnumerable<Incidencia>> GetIncidencias()
         {
             return await _unitofwork.Incidencias.GetAllIncidenciasAsync();
             
         }
+
         [HttpGet("getByCategoria/{idCategoria:int}")]
         public async Task<IEnumerable<Incidencia>> GetIncidenciaByCategoria(int categoriaId)
         {
             return await _unitofwork.Incidencias.GetIncidinciaByCategoria(categoriaId);   
         }
+        
         [HttpGet("getByTrainer/{idTrainer:int}")]
         public async Task<IEnumerable<Incidencia>> GetInidenciasByTrainerId(int idTrainer)
         {

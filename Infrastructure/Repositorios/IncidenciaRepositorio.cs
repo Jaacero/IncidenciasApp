@@ -26,16 +26,19 @@ namespace Infrastructure.Repositorios
 
         public async Task<IEnumerable<Incidencia>> Find(Expression<Func<Incidencia, bool>> expression)
         {
-           var incidencias = await context.Incidencias.Where(expression).ToListAsync();
+           var incidencias = await context.Incidencias.Where(expression)
+           .ToListAsync();
             return incidencias;
         }
         public async Task<IEnumerable<Incidencia>>GetIncidinciaByCategoria(int idcategoria)
         {
-            return await context.Incidencias.Where(x =>x.IdCategoria == idcategoria).ToListAsync();
+            return await context.Incidencias.Where(x =>x.IdCategoria == idcategoria)
+            .ToListAsync();
         }
         public async Task<IEnumerable<Incidencia>> GetInidenciasByTrainer(int idTrainer)
         {
-            return await context.Incidencias.Where(x => x.IdTrainer == idTrainer).ToListAsync();
+            return await context.Incidencias.Where(x => x.IdTrainer == idTrainer)
+            .ToListAsync();
         }
 
         public async Task<IEnumerable<Incidencia>> GetAllIncidenciasAsync()

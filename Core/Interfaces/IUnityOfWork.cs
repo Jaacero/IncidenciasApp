@@ -6,6 +6,6 @@ namespace Core.Interfaces
          ITrainerInterface Trainers {get;}
          IIncidenciaInterface Incidencias {get;}
          Task<int> SaveAsync();  
-         Task NotFound();
+        // Task NotFound();
     }
 }
