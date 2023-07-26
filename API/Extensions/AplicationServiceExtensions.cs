@@ -2,6 +2,7 @@ using AspNetCoreRateLimit;
 using Core.Interfaces;
 using Infrastructure.UnityOfWork;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace API.Extensions
 {
@@ -46,6 +47,14 @@ namespace API.Extensions
             services.AddApiVersioning(options =>{
                 options.DefaultApiVersion = new ApiVersion(1,0);
                 options.AssumeDefaultVersionWhenUnspecified = true;
+
+                //options.ApiVersionReader = new QueryStringApiVersionReader("v");
+                //options.ApiVersionReader = new HeaderApiVersionReader("X-Version");
+                options.ApiVersionReader = ApiVersionReader.Combine(new QueryStringApiVersionReader("v"),
+                new HeaderApiVersionReader("X-Version")
+                );
+
+
             });
         }
     }

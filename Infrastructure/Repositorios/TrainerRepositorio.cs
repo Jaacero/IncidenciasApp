@@ -52,6 +52,23 @@ namespace Infrastructure.Repositorios
             .ToListAsync();
         }
 
+        public virtual async Task<(int totalRegistros, IEnumerable<Trainer> registros)> GetAllTrinerAsync(int pageIndex, int pageSize, string search)
+        {
+            var query = context.Trainers as IQueryable<Trainer>;
+            if(!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(p => p.Nombre.ToLower().Contains(search));
+            }
+            var totalRegistros = await query.CountAsync();
+            var registros = await query
+                            .Include(p => p.EmailsTrainer)
+                            .Include(p => p.TelefonosTrainer)
+                            .Skip((pageIndex - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToListAsync();
+            return (totalRegistros, registros);            
+       }
+
         public async Task<Trainer> GetTrainerByIdAsync(int id)
         {
             var actor = await context.Trainers
@@ -70,9 +87,7 @@ namespace Infrastructure.Repositorios
             .Include(x => x.TelefonosTrainer)
             .ToListAsync();
            
-        }
-
-
+        }      
         public void Remove(Trainer trainer)
         {
             context.Set<Trainer>().Remove(trainer);

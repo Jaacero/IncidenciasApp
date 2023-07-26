@@ -4,11 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using API.DTOs;
 using AutoMapper;
 using Infrastructure.UnityOfWork;
+using API.Helpers;
 
 namespace API.Controllers
 {
     [ApiController]
     [Route("api/controler/trainer")]
+    [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
     public class TrainerController : ControllerBase
     {
         private readonly IUnityOfWork unityOfWork;
@@ -19,19 +22,26 @@ namespace API.Controllers
             this.unityOfWork = unityOfWork;
             this.mapper = mapper;
         }
+        // [HttpGet]
+       
+        // [ProducesResponseType(StatusCodes.Status200OK)]
+        // [ProducesResponseType(StatusCodes.Status404NotFound)]
+        // [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        // public async Task<ActionResult<IEnumerable<Trainer>>> GetTrainers()
+        // {
+        //     var actores = await unityOfWork.Trainers.
+        //     GetAllTrainersAsync();
+        //     return Ok(actores);
+        // }
         [HttpGet]
-        [ApiVersion("1.0")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<Trainer>>> GetTrainers()
+        public async Task<ActionResult<Pager<Trainer>>> Get([FromQuery] Params trainerParams)
         {
-            var actores = await unityOfWork.Trainers.
-            GetAllTrainersAsync();
-            return Ok(actores);
+            var trainer = await unityOfWork.Trainers.GetAllTrinerAsync(trainerParams.PageIndex, trainerParams.PageSize, trainerParams.Search);
+            var listadoTrainers = trainer.registros;
+            return new Pager<Trainer>(listadoTrainers,trainer.totalRegistros,trainerParams.PageIndex,trainerParams.PageSize,trainerParams.Search); 
         }
         [HttpGet("ById/{id}")]
-        [ApiVersion("1.0")]
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -44,16 +54,16 @@ namespace API.Controllers
             }
             return Ok(actor);
         }
-
+        [MapToApiVersion("1.1")]
         [HttpGet("getByName/{name}")]
-        [ApiVersion("1.0")]
+        
         public async Task<IEnumerable<Trainer>> GetTrainerByName(string name)
         {
             return await unityOfWork.Trainers.GetTrainersByName(name);
         }
 
         [HttpPost]
-        [ApiVersion("1.0")]
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -65,7 +75,7 @@ namespace API.Controllers
             return Ok();
         }
         [HttpPost("emails")]
-        [ApiVersion("1.0")]
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -77,7 +87,7 @@ namespace API.Controllers
             return Ok();
         }
         [HttpPost("telefonos")]
-        [ApiVersion("1.0")]
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -89,7 +99,7 @@ namespace API.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
-        [ApiVersion("1.0")]
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

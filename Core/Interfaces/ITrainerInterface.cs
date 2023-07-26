@@ -9,6 +9,7 @@ namespace Core.Interfaces
         Task<IEnumerable<Trainer>> GetAllTrainersAsync();
         IEnumerable<Trainer> Find(Expression<Func<Trainer,bool>> expression);
         Task<IEnumerable<Trainer>> GetTrainersByName(string name);
+        Task<(int totalRegistros, IEnumerable<Trainer> registros)> GetAllTrinerAsync(int pageIndex, int pageSize,string search);
         void Add(Trainer trainer);
         void AddRangeT(IEnumerable<Trainer> trainers);
         void AddRangeEmail(IEnumerable<EmailsTrainers> emails);

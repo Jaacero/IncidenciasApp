@@ -43,7 +43,10 @@ namespace Infrastructure.Repositorios
 
         public async Task<IEnumerable<Incidencia>> GetAllIncidenciasAsync()
         {
-            return await context.Incidencias.ToListAsync();
+            return await context.Incidencias
+            .Include(x =>x.Trainer)
+                .ThenInclude( x => x.Incidencias)
+            .ToListAsync();
         }
 
         public Task<Incidencia> GetIncidenciaByIdAsync()
